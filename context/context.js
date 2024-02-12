@@ -48,7 +48,7 @@ export const PROVIDER = ({children}) => {
     //CONNECT WALLET FUNCTION
     const connect = async () => {
         try {
-            
+            if(!window.ethereum) return notifyError("Install Metamask")
         } catch (error) {
             
         }
