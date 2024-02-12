@@ -46,5 +46,7 @@ export const PROVIDER = ({children}) => {
     const notifySuccess = (msg) => toast.success(msg, {duration: 4000});
 
     //CONNECT WALLET FUNCTION
-    
+    const connect = async () => {
+        
+    }
 }
