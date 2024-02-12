@@ -71,6 +71,10 @@ export const PROVIDER = ({ children }) => {
 
   //LOAD TOKEN DATA
   const LOAD_TOKEN = async (token) => {
-    
+    try {
+        
+    } catch (error) {
+        
+    }
   };
 };
