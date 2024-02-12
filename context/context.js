@@ -74,7 +74,9 @@ export const PROVIDER = ({ children }) => {
     try {
         
     } catch (error) {
-        
+        const errorMsg = parseErrorMsg(error);
+        notifyError(errorMsg);
+        console.log(error);
     }
   };
 };
