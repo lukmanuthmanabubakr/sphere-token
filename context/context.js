@@ -59,6 +59,10 @@ export const PROVIDER = ({children}) => {
             } else {
                 notifyError("Sorry, you have no account")
             }
+
+
+            const provider = await web3Provider();
+            const network = await provider.getNetwork();
         } catch (error) {
             
         }
