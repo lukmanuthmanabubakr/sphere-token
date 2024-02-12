@@ -49,6 +49,10 @@ export const PROVIDER = ({children}) => {
     const connect = async () => {
         try {
             if(!window.ethereum) return notifyError("Install Metamask")
+
+            const accounts = await window.ethereum.request({
+                method: "eth_requestAccounts",
+            })
         } catch (error) {
             
         }
