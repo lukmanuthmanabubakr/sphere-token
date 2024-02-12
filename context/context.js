@@ -32,39 +32,42 @@ import IUniswapV3Poolcfrom from "@uniswap/v3-core/artifacts/contracts/UniswapV3P
 import { ERC20_ABI, web3Provider, CONNECTING_CONTRACT } from "./constants";
 import { shortenAddress, parseErrorMsg } from "../utils/index";
 
-
 export const CONTEXT = React.createContext();
 
-export const PROVIDER = ({children}) => {
-    const TOKEN_SWAP = "TOKEN SWAP DAPP";
-    const [loader, setLoader] = useState(false);
-    const [address, setAddress] = useState("");
-    const [chainId, setchainId] = useState();
+export const PROVIDER = ({ children }) => {
+  const TOKEN_SWAP = "TOKEN SWAP DAPP";
+  const [loader, setLoader] = useState(false);
+  const [address, setAddress] = useState("");
+  const [chainId, setChainId] = useState();
 
-    //NOTIFICATION
-    const notifyError = (msg) => toast.error(msg, {duration: 4000});
-    const notifySuccess = (msg) => toast.success(msg, {duration: 4000});
+  //NOTIFICATION
+  const notifyError = (msg) => toast.error(msg, { duration: 4000 });
+  const notifySuccess = (msg) => toast.success(msg, { duration: 4000 });
 
-    //CONNECT WALLET FUNCTION
-    const connect = async () => {
-        try {
-            if(!window.ethereum) return notifyError("Install Metamask")
+  //CONNECT WALLET FUNCTION
+  const connect = async () => {
+    try {
+      if (!window.ethereum) return notifyError("Install Metamask");
 
-            const accounts = await window.ethereum.request({
-                method: "eth_requestAccounts",
-            });
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
 
-            if(accounts.length) {
-                setAddress(accounts[0]);
-            } else {
-                notifyError("Sorry, you have no account")
-            }
+      if (accounts.length) {
+        setAddress(accounts[0]);
+      } else {
+        notifyError("Sorry, you have no account");
+      }
 
-
-            const provider = await web3Provider();
-            const network = await provider.getNetwork();
-        } catch (error) {
-            
-        }
+      const provider = await web3Provider();
+      const network = await provider.getNetwork();
+      setChainId(network.chainId);
+    } catch (error) {
+      const errorMsg = parseErrorMsg(error);
+      notifyError(errorMsg);
+      console.log(error);
     }
-}
+  };
+
+  
+};
