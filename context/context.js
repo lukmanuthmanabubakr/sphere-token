@@ -80,4 +80,10 @@ export const PROVIDER = ({ children }) => {
         console.log(error);
     }
   };
+
+  //INTERNAL FUNCTION
+  async function getPool(tokenA, tokenB, FeeAmount, provider){
+    const [token0, token1] = tokenA.sortsBefore(tokenB);
+  } 
+
 };
