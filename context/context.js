@@ -38,7 +38,7 @@ export const CONTEXT = React.createContext();
 export const PROVIDER = ({children}) => {
     const TOKEN_SWAP = "TOKEN SWAP DAPP";
     const [loader, setLoader] = useState(false);
-    const [address, setaddress] = useState("");
+    const [address, setAddress] = useState("");
     const [chainId, setchainId] = useState();
 
     //NOTIFICATION
@@ -52,7 +52,13 @@ export const PROVIDER = ({children}) => {
 
             const accounts = await window.ethereum.request({
                 method: "eth_requestAccounts",
-            })
+            });
+
+            if(accounts.length) {
+                setAddress(accounts[0]);
+            } else {
+                notifyError("Sorry, you have no account")
+            }
         } catch (error) {
             
         }
