@@ -47,6 +47,10 @@ export const PROVIDER = ({children}) => {
 
     //CONNECT WALLET FUNCTION
     const connect = async () => {
-        
+        try {
+            
+        } catch (error) {
+            
+        }
     }
 }
