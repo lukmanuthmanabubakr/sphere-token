@@ -72,7 +72,7 @@ export const PROVIDER = ({ children }) => {
   //LOAD TOKEN DATA
   const LOAD_TOKEN = async (token) => {
     try {
-        
+        const tokenDetail = await CONNECTING_CONTRACT
     } catch (error) {
         const errorMsg = parseErrorMsg(error);
         notifyError(errorMsg);
