@@ -39,5 +39,11 @@ export const PROVIDER = ({children}) => {
     const TOKEN_SWAP = "TOKEN SWAP DAPP";
     const [loader, setLoader] = useState(false);
     const [address, setaddress] = useState("");
-    const [chainId, setchainId] = useState()
+    const [chainId, setchainId] = useState();
+
+    //NOTIFICATION
+    const notifyError = (msg) => toast.error(msg, {duration: 4000});
+    const notifySuccess = (msg) => toast.success(msg, {duration: 4000});
+
+    
 }
