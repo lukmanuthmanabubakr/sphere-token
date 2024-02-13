@@ -72,18 +72,19 @@ export const PROVIDER = ({ children }) => {
   //LOAD TOKEN DATA
   const LOAD_TOKEN = async (token) => {
     try {
-        const tokenDetail = await CONNECTING_CONTRACT(token);
-        return tokenDetail;
+      const tokenDetail = await CONNECTING_CONTRACT(token);
+      return tokenDetail;
     } catch (error) {
-        const errorMsg = parseErrorMsg(error);
-        notifyError(errorMsg);
-        console.log(error);
+      const errorMsg = parseErrorMsg(error);
+      notifyError(errorMsg);
+      console.log(error);
     }
   };
 
   //INTERNAL FUNCTION
-  async function getPool(tokenA, tokenB, FeeAmount, provider){
-    const [token0, token1] = tokenA.sortsBefore(tokenB);
-  } 
-
+  async function getPool(tokenA, tokenB, FeeAmount, provider) {
+    const [token0, token1] = tokenA.sortsBefore(tokenB)
+      ? [tokenA, tokenB]
+      : [tokenB, tokenA];
+  }
 };
