@@ -86,5 +86,7 @@ export const PROVIDER = ({ children }) => {
     const [token0, token1] = tokenA.sortsBefore(tokenB)
       ? [tokenA, tokenB]
       : [tokenB, tokenA];
+
+      const poolAddress = Pool.getAddress(token0, token1, FeeAmount);
   }
 };
