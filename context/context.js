@@ -87,13 +87,23 @@ export const PROVIDER = ({ children }) => {
       ? [tokenA, tokenB]
       : [tokenB, tokenA];
 
-      const poolAddress = Pool.getAddress(token0, token1, FeeAmount);
+    const poolAddress = Pool.getAddress(token0, token1, FeeAmount);
 
+    const contract = new ethers.Contract(poolAddress, IUniswapV3Pool, provider);
 
-      const contract = new ethers.Contract(poolAddress,IUniswapV3Pool, provider);
+    let liquidity = await contract.liquidity();
 
-      let liquidity = await contract.liquidity();
+    let { sqrtPriceX96, tick } = await contract.slot0();
 
-      let { sqrtPriceX96, tick } = await contract.slot0();
+    liquidity = JSBI.BigInt(liquidity.toString());
+    sqrtPriceX96 = JSBI.BigInt(sqrtPriceX96.toString());
+
+    return new Pool(token0, token1, FeeAmount, sqrtPriceX96, liquidity, tick, [
+      {
+        index: nearestUsableTick(TickMath.MIN_TICK, TICK_SPACINGS[FeeAmount]),
+        liquidityNet: liquidity,
+        liquidityGross: liquidity,
+      },
+    ]);
   }
 };
