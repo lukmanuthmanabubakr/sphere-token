@@ -88,5 +88,10 @@ export const PROVIDER = ({ children }) => {
       : [tokenB, tokenA];
 
       const poolAddress = Pool.getAddress(token0, token1, FeeAmount);
+
+
+      const contract = new ethers.Contract(poolAddress,IUniswapV3Pool, provider);
+
+      let liquidity = await contract.liquidity()
   }
 };
