@@ -98,29 +98,110 @@ export const PROVIDER = ({ children }) => {
     liquidity = JSBI.BigInt(liquidity.toString());
     sqrtPriceX96 = JSBI.BigInt(sqrtPriceX96.toString());
 
-    console.log("CALLING_POOL------------")
+    console.log("CALLING_POOL------------");
 
     return new Pool(token0, token1, FeeAmount, sqrtPriceX96, liquidity, tick, [
       {
         index: nearestUsableTick(TickMath.MIN_TICK, TICK_SPACINGS[FeeAmount]),
         liquidityNet: liquidity,
         liquidityGross: liquidity,
-      },{
+      },
+      {
         index: nearestUsableTick(TickMath.MIN_TICK, TICK_SPACINGS[FeeAmount]),
         liquidityNet: JSBI.multiply(liquidity, JSBI.BigInt("-1")),
         liquidityGross: liquidity,
-      }
-    ]); 
+      },
+    ]);
   }
 
   //SWAP_OPTION FUNCTION  INTERNAL
   function swapOptions(options) {
     return Object.assign(
-        {
-            slippageTolerance: new Percent(5, 1000),
-            recipient: RECIPIENT,
-        },
-        options
-    )
+      {
+        slippageTolerance: new Percent(5, 1000),
+        recipient: RECIPIENT,
+      },
+      options
+    );
   }
+
+  //BUILDTRADE
+  function buildTrade(trade) {
+    return new RouterTrade({
+      v2Routes: trades
+        .filter((trade) => trade instanceof V2Trade)
+        .map((trade) => ({
+          routev2: trade.route,
+          inputAmount: trade.inputAmount,
+          outputAmount: trade.outputAmount,
+        })),
+      v3Routes: trades
+        .filter((trade) => trade instanceof V3Trade)
+        .map((trade) => ({
+          routev3: trade.route,
+          inputAmount: trade.inputAmount,
+          outputAmount: trade.outputAmount,
+        })),
+      mixedRoutes: trades
+        .filter((trade) => trade instanceof V3Trade)
+        .map((trade) => ({
+          mixedRoute: trade.route,
+          inputAmount: trade.inputAmount,
+          outputAmount: trade.outputAmount,
+        })),
+
+      tradeType: trades[0].tradeType,
+    });
+  }
+
+  //DEMO ACCOUNT
+
+  const RECIPIENT = "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B";
+
+  //SWAP FUNCTION
+  const swap = async (token_1, token_2, swapInputAmount) => {
+    try {
+      console.log("CALLING ME________________SWAP");
+      const _inputAmount = 1;
+      const provider = web3Provider();
+
+      const network = await provider.getNetwork();
+      // const ETHER = Ether.onChain(network.chainId)
+      const ETHER = Ether.onChain(1);
+
+      //TOKEN CONTRACT
+      const tokenAddress1 = await CONNECTING_CONTRACT("");
+      const tokenAddress2 = await CONNECTING_CONTRACT("");
+
+      //TOKEN DETAILS
+      const TOKEN_A = new Token(
+        tokenAddress1.chainId,
+        tokenAddress1.address,
+        tokenAddress1.decimals,
+        tokenAddress1.symbol,
+        tokenAddress1.name
+      );
+
+      const TOKEN_B = new Token(
+        tokenAddress2.chainId,
+        tokenAddress2.address,
+        tokenAddress2.decimals,
+        tokenAddress2.symbol,
+        tokenAddress2.name
+      );
+
+
+      const WETH_USDCV3 = await getPool(
+        TOKEN_A,
+        TOKEN_B,
+        FeeAmount.MEDIUM,
+        provider
+      )
+
+    } catch (error) {
+      const errorMsg = parseErrorMsg(error);
+      notifyError(errorMsg);
+      console.log(error);
+    }
+  };
 };
