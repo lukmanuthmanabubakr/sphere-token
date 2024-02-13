@@ -98,12 +98,18 @@ export const PROVIDER = ({ children }) => {
     liquidity = JSBI.BigInt(liquidity.toString());
     sqrtPriceX96 = JSBI.BigInt(sqrtPriceX96.toString());
 
+    console.log("CALLING_POOL------------")
+
     return new Pool(token0, token1, FeeAmount, sqrtPriceX96, liquidity, tick, [
       {
         index: nearestUsableTick(TickMath.MIN_TICK, TICK_SPACINGS[FeeAmount]),
         liquidityNet: liquidity,
         liquidityGross: liquidity,
-      },
-    ]);
+      },{
+        index: nearestUsableTick(TickMath.MIN_TICK, TICK_SPACINGS[FeeAmount]),
+        liquidityNet: JSBI.multiply(liquidity, JSBI.BigInt("-1")),
+        liquidityGross: liquidity,
+      }
+    ]); 
   }
 };
