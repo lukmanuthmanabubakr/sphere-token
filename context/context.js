@@ -92,6 +92,8 @@ export const PROVIDER = ({ children }) => {
 
       const contract = new ethers.Contract(poolAddress,IUniswapV3Pool, provider);
 
-      let liquidity = await contract.liquidity()
+      let liquidity = await contract.liquidity();
+
+      let { sqrtPriceX96, tick } = await contract.slot0();
   }
 };
