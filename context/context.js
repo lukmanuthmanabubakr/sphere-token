@@ -191,13 +191,33 @@ export const PROVIDER = ({ children }) => {
       );
 
 
-      const WETH_USDCV3 = await getPool(
+      const WETH_USDC_V3 = await getPool(
         TOKEN_A,
         TOKEN_B,
         FeeAmount.MEDIUM,
         provider
       )
 
+      const inputEther = ethers.utils.parseEther("1").toString();
+
+      const trade = await V3Trade.fromRoute(
+        new RouteV3([WETH_USDC_V3], ETHER, TOKEN_B),
+        CurrencyAmount.fromRawAmount(Ether, inputEther),
+        TradeType.EXACT_INPUT
+      );
+
+
+      const routerTrade = buildTrade([trade]);
+
+      const opts = swapOptions({});
+
+      const params = SwapRouter.swapERC20CallParameters(routerTrade, opts);
+
+      console.log(WETH_USDC_V3);
+      console.log(trade);
+      console.log(routerTrade);
+      console.log(opts);
+      console.log(params);
     } catch (error) {
       const errorMsg = parseErrorMsg(error);
       notifyError(errorMsg);
