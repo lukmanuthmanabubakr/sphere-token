@@ -112,4 +112,15 @@ export const PROVIDER = ({ children }) => {
       }
     ]); 
   }
+
+  //SWAP_OPTION FUNCTION  INTERNAL
+  function swapOptions(options) {
+    return Object.assign(
+        {
+            slippageTolerance: new Percent(5, 1000),
+            recipient: RECIPIENT,
+        },
+        options
+    )
+  }
 };
