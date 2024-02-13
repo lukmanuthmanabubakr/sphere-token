@@ -190,13 +190,12 @@ export const PROVIDER = ({ children }) => {
         tokenAddress2.name
       );
 
-
       const WETH_USDC_V3 = await getPool(
         TOKEN_A,
         TOKEN_B,
         FeeAmount.MEDIUM,
         provider
-      )
+      );
 
       const inputEther = ethers.utils.parseEther("1").toString();
 
@@ -205,7 +204,6 @@ export const PROVIDER = ({ children }) => {
         CurrencyAmount.fromRawAmount(Ether, inputEther),
         TradeType.EXACT_INPUT
       );
-
 
       const routerTrade = buildTrade([trade]);
 
@@ -218,10 +216,64 @@ export const PROVIDER = ({ children }) => {
       console.log(routerTrade);
       console.log(opts);
       console.log(params);
+
+      let ethBalance;
+
+      let tokenA;
+      let tokenB;
+
+      ethBalance = await provider.getBalance(RECIPIENT);
+
+      tokenA = await tokenAddress1.balance;
+      tokenA = await tokenAddress2.balance;
+
+      console.log("----------------BEFORE");
+      console.log("EthBalance:", ethers.utils.formatUnits(ethBalance, 18));
+      console.log("tokenA:", tokenA);
+      console.log("tokenB:", tokenB);
+
+      const tx = await signer.sendTransaction({
+        data: params.calldata,
+        to: "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",
+        value: params.value,
+        from: RECIPIENT,
+      });
+
+      console.log("----------------CALLING_ME");
+      const receipt = await tx.wait();
+      console.log("----------------SUCCESS");
+      console.log("STATUS", receipt.status);
+
+      ethBalance = await provider.getBalance(RECIPIENT);
+      tokenA = await tokenAddress1.balance;
+      tokenA = await tokenAddress2.balance;
+      console.log("----------------AFTER");
+
+      console.log("EthBalance:", ethers.utils.formatUnits(ethBalance, 18));
+      console.log("tokenA:", tokenA);
+      console.log("tokenB:", tokenB);
     } catch (error) {
       const errorMsg = parseErrorMsg(error);
       notifyError(errorMsg);
       console.log(error);
     }
   };
+
+  return (
+    <CONTEXT.Provider
+      value={{
+        TOKEN_SWAP,
+        LOAD_TOKEN,
+        notifyError,
+        notifySuccess,
+        setLoader,
+        loader,
+        connect,
+        address,
+        swap,
+      }}
+    >
+      {children}
+    </CONTEXT.Provider>
+  );
 };
