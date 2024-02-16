@@ -175,13 +175,13 @@ export const PROVIDER = ({ children }) => {
   const swap = async (token_1, token_2, swapInputAmount) => {
     console.log(token_1, token_2, swapInputAmount);
 
-    try {
+    // try {
       console.log("CALLING ME _________________SWAP");
     //   // const _inputAmount = 1;
       const provider = await web3Provider();
 
-      const network = await provider.getNetwork();
-      const ETHER = Ether.onChain(network.chainID);
+      // const network = await provider.getNetwork();
+      const ETHER = Ether.onChain(token_1.chainId);
       // const ETHER = Ether.onChain(1);
 
     //   //   // TOKEN CONTRACT
@@ -228,25 +228,25 @@ export const PROVIDER = ({ children }) => {
 
       const opts = swapOptions({});
 
-    //   const params = SwapRouter.swapERC20CallParameters(routerTrade, opts);
+      const params = SwapRouter.swapERC20CallParameters(routerTrade, opts);
 
-    //   console.log(WETH_USDC_V3);
-    //   console.log(trade);
-    //   console.log(routerTrade);
-    //   console.log(opts);
-    //   console.log(params);
+      console.log(WETH_USDC_V3);
+      console.log(trade);
+      console.log(routerTrade);
+      console.log(opts);
+      console.log(params);
 
-    //   let ethBalance;
-    //   let tokenA;
-    //   let tokenB;
+      let ethBalance;
+      let tokenA;
+      let tokenB;
 
-    //   ethBalance = await provider.getBalance(RECIPIENT);
-    //   tokenA = await tokenAddress1.balance;
-    //   tokenB = await tokenAddress2.balance;
-    //   console.log("------------------BEFORE");
-    //   console.log("EthBalance:", ethers.utils.formatUnits(ethBalance, 18));
-    //   console.log("tokenA:", tokenA);
-    //   console.log("tokenB:", tokenB);
+      ethBalance = await provider.getBalance(RECIPIENT);
+      tokenA = await tokenAddress1.balance;
+      tokenB = await tokenAddress2.balance;
+      console.log("------------------BEFORE");
+      console.log("EthBalance:", ethers.utils.formatUnits(ethBalance, 18));
+      console.log("tokenA:", tokenA);
+      console.log("tokenB:", tokenB);
 
     //   const tx = await signerTransaction({
     //     data: params.calldata,
@@ -269,11 +269,11 @@ export const PROVIDER = ({ children }) => {
     //   console.log("EthBalance:", ethers.utils.formatUnits(ethBalance, 18));
     //   console.log("tokenA:", tokenA);
     //   console.log("tokenB:", tokenB);
-    } catch (error) {
+    // } catch (error) {
     //   const errorMsg = parseErrorMsg(error);
     //   notifyError(errorMsg);
     //   console.log(error);
-    }
+    // }
   };
 
   return (
