@@ -175,58 +175,58 @@ export const PROVIDER = ({ children }) => {
   const swap = async (token_1, token_2, swapInputAmount) => {
     console.log(token_1, token_2, swapInputAmount);
 
-    // try {
-    //   console.log("CALLING ME _________________SWAP");
+    try {
+      console.log("CALLING ME _________________SWAP");
     //   // const _inputAmount = 1;
-    //   const provider = await web3Provider();
+      const provider = await web3Provider();
 
-    //   // const network = await provider.getNetwork();
-    //   const ETHER = Ether.onChain(token_1.chainID);
-    //   // const ETHER = Ether.onChain(1);
+      const network = await provider.getNetwork();
+      const ETHER = Ether.onChain(network.chainID);
+      // const ETHER = Ether.onChain(1);
 
     //   //   // TOKEN CONTRACT
-    //   const tokenAddress1 = await CONNECTING_CONTRACT(token_1.address);
-    //   const tokenAddress2 = await CONNECTING_CONTRACT(token_2.address);
+      const tokenAddress1 = await CONNECTING_CONTRACT(token_1.address);
+      const tokenAddress2 = await CONNECTING_CONTRACT(token_2.address);
 
     //   //   // TOKEN DETAILS
-    //   const TOKEN_A = new Token(
-    //     tokenAddress1.chainId,
-    //     tokenAddress1.address,
-    //     tokenAddress1.decimals,
-    //     tokenAddress1.symbol,
-    //     tokenAddress1.name
-    //   );
+      const TOKEN_A = new Token(
+        tokenAddress1.chainId,
+        tokenAddress1.address,
+        tokenAddress1.decimals,
+        tokenAddress1.symbol,
+        tokenAddress1.name
+      );
 
-    //   const TOKEN_B = new Token(
-    //     tokenAddress2.chainId,
-    //     tokenAddress2.address,
-    //     tokenAddress2.decimals,
-    //     tokenAddress2.symbol,
-    //     tokenAddress2.name
-    //   );
+      const TOKEN_B = new Token(
+        tokenAddress2.chainId,
+        tokenAddress2.address,
+        tokenAddress2.decimals,
+        tokenAddress2.symbol,
+        tokenAddress2.name
+      );
 
-    //   const WETH_USDC_V3 = await getPool(
-    //     TOKEN_A,
-    //     TOKEN_B,
-    //     FeeAmount.MEDIUM,
-    //     provider
-    //   );
+      const WETH_USDC_V3 = await getPool(
+        TOKEN_A,
+        TOKEN_B,
+        FeeAmount.MEDIUM,
+        provider
+      );
 
-    //   const inputEther = ethers.utils.parseEther(swapInputAmount).toString();
+      const inputEther = ethers.utils.parseEther(swapInputAmount).toString();
 
     //   console.log("WETH_USDC_V3:", WETH_USDC_V3);
     //   console.log("ETHER:", ETHER);
     //   console.log("TOKEN_B:", TOKEN_B);
 
-    //   const trade = await V3Trade.fromRoute(
-    //     new RouteV3([WETH_USDC_V3], ETHER, TOKEN_B),
-    //     CurrencyAmount.fromRawAmount(ETHER, inputEther),
-    //     TradeType.EXACT_INPUT
-    //   );
+      const trade = await V3Trade.fromRoute(
+        new RouteV3([WETH_USDC_V3], ETHER, TOKEN_B),
+        CurrencyAmount.fromRawAmount(ETHER, inputEther),
+        TradeType.EXACT_INPUT
+      );
 
-    //   const routerTrade = buildTrade([trade]);
+      const routerTrade = buildTrade([trade]);
 
-    //   const opts = swapOptions({});
+      const opts = swapOptions({});
 
     //   const params = SwapRouter.swapERC20CallParameters(routerTrade, opts);
 
@@ -269,11 +269,11 @@ export const PROVIDER = ({ children }) => {
     //   console.log("EthBalance:", ethers.utils.formatUnits(ethBalance, 18));
     //   console.log("tokenA:", tokenA);
     //   console.log("tokenB:", tokenB);
-    // } catch (error) {
+    } catch (error) {
     //   const errorMsg = parseErrorMsg(error);
     //   notifyError(errorMsg);
     //   console.log(error);
-    // }
+    }
   };
 
   return (
