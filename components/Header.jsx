@@ -1,5 +1,8 @@
 import React from "react";
 import { shortenAddress } from "../utils";
+import { Button, ChakraProvider } from "@chakra-ui/react";
+import Link from "next/link";
+
 
 //INTERNAL IMPORT
 const Header = ({ address, connect }) => {
@@ -16,25 +19,25 @@ const Header = ({ address, connect }) => {
       name: "How It Works",
       link: "#howworks",
     },
-    {
-      name: "Q&A",
-      link: "#question",
-    },
-    {
-      name: "Blog",
-      link: "#blog",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
-    },
+    // {
+    //   name: "Q&A",
+    //   link: "#question",
+    // },
+    // {
+    //   name: "Blog",
+    //   link: "#blog",
+    // },
+    // {
+    //   name: "Contact",
+    //   link: "#contact",
+    // },
   ]
   return (
   <div className="mein-menu">
     <nav className="navbar navbar-expand-lg navbar-dark">
       <div className="container">
         <a href="/" className="navbar-brand">
-          <img src="assets/img/logo.png" alt="swap" />
+         <h2>Swap-Sphere</h2>
         </a>
         <button
         className="navbar-toggler"
@@ -74,6 +77,14 @@ const Header = ({ address, connect }) => {
           
          }
         </ul>
+        <div style={{marginLeft: "1rem"}}>
+          <Link href="/sake" >
+              <button className="new_button">
+                Stake
+              </button>
+          </Link>
+
+         </div>
 
         </div>
       </div>

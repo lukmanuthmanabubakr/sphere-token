@@ -1,4 +1,6 @@
 import React from "react";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return <div 
@@ -15,7 +17,9 @@ const Footer = () => {
         >
           <div className="top-footer">
             <div className="logo">
-              <img src="assets/img/logo.png" alt="" />
+              <a href="/" className="navbar-brand">
+                <h2 style={{color: "#fff"}}>Swap-Sphere</h2>
+              </a>
             </div>
             <a href="/" className="button-1">
               Get In touch
@@ -97,20 +101,12 @@ const Footer = () => {
               </div>
             </form>
             <div className="social-style">
-              <a href="#">
-                <i className="fab fa-facebook-f"></i>
+              <a href="https://www.github.com">
+                <i className=""><FaGithub /></i>
+                
               </a>
-              <a href="#">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-pinterest"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-instagram"></i>
+              <a href="https://www.twitter.com">
+                <i className=""><FaSquareXTwitter /></i>
               </a>
             </div>
           </div>

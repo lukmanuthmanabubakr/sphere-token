@@ -20,7 +20,6 @@ const Platfrom = () => {
                 <div className="section-head">
                   <h4 className="lasthead">About us</h4>
                   <h2 className="title">The Online Cryptocurrency Exchange Platform</h2>
-                  <p className="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis saepe dignissimos qui nemo exercitationem similique.</p>
                 </div>
 
               </div>

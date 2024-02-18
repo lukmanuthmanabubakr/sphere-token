@@ -183,8 +183,6 @@ async function main() {
 
 /*
     node scripts/deploy.js
-
-    hdhd
 */
 
 main()

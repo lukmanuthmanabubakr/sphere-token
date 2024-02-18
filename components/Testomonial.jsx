@@ -10,13 +10,13 @@ const Testomonial = () => {
           <div className="col-lg-5 text-center wow fadeInUp" data-wow-duration="0.3s" data-wow-delay="0.3s">
               <div className="section-head">
                 <h4 className="lasthead">
-                  Testimonials
+                  Meet The Team
                 </h4>
                 <h2 className="title">
                   Don't just take our word for it!
                 </h2>
                 <p className="text">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime fugiat animi magnam corrupti, harum.
+                  {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime fugiat animi magnam corrupti, harum. */}
                 </p>
               </div>
           </div>
