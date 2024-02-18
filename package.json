@@ -17,6 +17,7 @@
     "@next/font": "14.0.3",
     "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@thirdweb-dev/react": "^4.4.8",
     "@types/sinon-chai": "^3.2.9",
     "@uniswap/sdk": "^3.0.3",
     "@uniswap/sdk-core": "^4.0.2",
