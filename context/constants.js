@@ -1,7 +1,7 @@
 const ethers = require("ethers");
 import web3Modal from "web3modal";
 
-//INTERNAL IMPORT
+//INTERNAL IMPORTS
 import ERC20ABI from "./abi.json";
 
 export const ERC20_ABI = ERC20ABI;
