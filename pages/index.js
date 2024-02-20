@@ -33,7 +33,7 @@ const index = () => {
   const [token_2, setToken_2] = useState();
   const [openToken, setOpenToken] = useState(false);
 
-  //INPUT
+ 
   const [slippageAmount, setslippageAmount] = useState(2);
   const [deadlineMinutes, setDeadlineMinutes] = useState(10);
   const [inputAmount, setInputAmount] = useState(undefined);
