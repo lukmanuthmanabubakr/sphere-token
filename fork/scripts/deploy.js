@@ -167,7 +167,7 @@ async function main() {
   console.log("status", receipt.status);
 
 
-  // console.log(opts);
+
   // console.log(params);
 
   ethBalance = await provider.getBalance(RECIPIENT);
