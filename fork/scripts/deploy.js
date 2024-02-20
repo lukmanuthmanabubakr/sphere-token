@@ -167,7 +167,6 @@ async function main() {
   console.log("status", receipt.status);
 
 
-  // console.log(trade);
   // console.log(routerTrade);
   // console.log(opts);
   // console.log(params);
