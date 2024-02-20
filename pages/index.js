@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 
-//INTERNAL IMPORT
 import {
   Header,
   Footer,
@@ -29,7 +28,7 @@ const index = () => {
     swap,
   } = useContext(CONTEXT);
 
-  // OPEN TOKEN COMPONENT
+ 
   const [token_1, setToken_1] = useState();
   const [token_2, setToken_2] = useState();
   const [openToken, setOpenToken] = useState(false);
