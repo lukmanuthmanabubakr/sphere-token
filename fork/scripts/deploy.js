@@ -168,7 +168,6 @@ async function main() {
 
 
 
-  // console.log(params);
 
   ethBalance = await provider.getBalance(RECIPIENT);
   wethBalance = await wethContract.balanceOf(RECIPIENT);
