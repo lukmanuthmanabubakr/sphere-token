@@ -61,7 +61,6 @@ const index = () => {
       />
       <Feature />
       <Platfrom />
-      {/* <Scurity /> */}
       <Testomonial />
       <Footer />
 
