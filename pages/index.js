@@ -38,7 +38,7 @@ const index = () => {
   const [deadlineMinutes, setDeadlineMinutes] = useState(10);
   const [inputAmount, setInputAmount] = useState(undefined);
 
-  //OUTPUT
+  //OUTPUT RESULT 
   const [outputAmount, setOutputAmount] = useState(undefined);
   const [transaction, setTransaction] = useState(undefined);
   const [ratio, setRatio] = useState(undefined);
