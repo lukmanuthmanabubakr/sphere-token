@@ -7,7 +7,6 @@ const { expect } = require("chai");
 
 describe("Lock", function () {
   
-  // We use loadFixture to run this setup once, snapshot that state,
   // and reset Hardhat Network to that snapshot in every test.
   async function deployOneYearLockFixture() {
     const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
