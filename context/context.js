@@ -83,7 +83,7 @@ export const PROVIDER = ({ children }) => {
     }
   };
 
-  // To be Continued by 
+  // To be Con
 
   //INTERNAL FUNCTION:
 
