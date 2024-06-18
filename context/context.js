@@ -29,7 +29,7 @@ import {
 import { MixedRouteTrade, Trade as RouterTrade } from "@uniswap/router-sdk";
 import IUniswapV3Pool from "@uniswap/v3-core/artifacts/contracts/UniswapV3Pool.sol/UniswapV3Pool.json";
 
-//Internal import
+//Inte
 
 import { ERC20_ABI, web3Provider, CONNECTING_CONTRACT } from "./constants";
 import { shortenAddress, parseErrorMsg } from "../utils/index";
